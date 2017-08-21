@@ -504,6 +504,13 @@ BinaryProtocol &BinaryProtocol::noCh()
     return this->Ch(_BaseCh);
 }
 
+BinaryProtocol &BinaryProtocol::Data(const QByteArray &Data)
+{
+    mData.clear();
+    mData<<Data;
+    return *this;
+}
+
 BinaryProtocol &BinaryProtocol::Read()
 {
     return this->Data(_Read);

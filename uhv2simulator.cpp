@@ -64,7 +64,7 @@ void UHV2Simulator::work()
                 }
                 else if ((currentBP.GetCommand()=="ReadP")||(currentBP.GetCommand()=="ReadV")||(currentBP.GetCommand()=="ReadI"))
                 {
-                    pendingSend=currentBP.HdrRsp().Data(qrand()%0xff).GenMsg();
+                    pendingSend=currentBP.HdrRsp().Data(QByteArray::fromStdString(QString(QString::number(quint8(qrand()%999))+"E-"+QString::number(quint8(qrand()%9))).toStdString())).GenMsg();
                 }
                 isTimedOut=false;
                 timer.start();

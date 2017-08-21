@@ -125,11 +125,10 @@ public:
     BinaryProtocol &ChSerial();
     BinaryProtocol &noCh();
 
+    BinaryProtocol &Data(const QByteArray &Data);
     BinaryProtocol &Data(const quint8 Data);
     BinaryProtocol &Read();
     BinaryProtocol &On();
-    BinaryProtocol &OnProtectVStep();
-    BinaryProtocol &OnProtectVFixed();
     BinaryProtocol &Off();
 };
 
