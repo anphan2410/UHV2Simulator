@@ -75,6 +75,8 @@ public:
 
     quint8 GetBPNo() const;
     BinaryProtocol &SetBPNo(const quint8 BPNum);
+    BinaryProtocol &HdrCmd();
+    BinaryProtocol &HdrRsp();
 
     //Get Protocol Parts
     TypHdr GetHdrCmd() const;

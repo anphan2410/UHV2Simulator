@@ -63,6 +63,7 @@ BinaryProtocol &BinaryProtocol::FromQByteArray(const QByteArray &QBArr)
     else
         IntTmp1 = IntTmp2 - _BaseHdrCmd;
     BinaryProtocol * BPTmp = new BinaryProtocol(0);
+    BPTmp->SetBPNo(IntTmp1);
     IntTmp1 = 0;
     BPTmp->mHdr = IntTmp2;
     IntTmp1 += _SzHdr;
@@ -92,6 +93,18 @@ BinaryProtocol &BinaryProtocol::SetBPNo(const quint8 BPNum)
     mBPNo = BPNum;
     mHdrCmd = quint8(BPNum+_BaseHdrCmd);
     mHdrRsp = quint8(BPNum+_BaseHdrRsp);
+    return *this;
+}
+
+BinaryProtocol &BinaryProtocol::HdrCmd()
+{
+    mHdr = mHdrCmd;
+    return *this;
+}
+
+BinaryProtocol &BinaryProtocol::HdrRsp()
+{
+    mHdr = mHdrRsp;
     return *this;
 }
 
@@ -143,7 +156,6 @@ const QByteArray BinaryProtocol::GetMsg() const
 const QByteArray BinaryProtocol::GenMsg()
 {
     mMsg.clear();
-    mHdr=mHdrCmd;
     quint8 int8tmp = _SzCmd + _SzCh + mData.size();
     if (int8tmp == 4)
         mDataLen = _StdDatLen;
