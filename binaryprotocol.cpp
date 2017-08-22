@@ -357,7 +357,7 @@ const QString BinaryProtocol::GetDataTranslation() const
     case 0x5530:
         StrTmp = QString(mData);
         StrTmp =  QString::number((StrTmp.section('E',0,0,QString::SectionSkipEmpty).toDouble())
-                                  *qPow(10,StrTmp.section('E',1,1,QString::SectionSkipEmpty).toDouble()));
+                                  *qPow(10,StrTmp.section('E',1,1,QString::SectionSkipEmpty).toDouble())).toUpper();
         break;
     default:
         StrTmp = QString(mData);
